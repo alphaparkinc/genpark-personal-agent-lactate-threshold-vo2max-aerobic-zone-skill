@@ -1,0 +1,80 @@
+{
+  "name": "genpark-personal-agent-lactate-threshold-vo2max-aerobic-zone-skill",
+  "version": "1.0.0",
+  "title": "Lactate Threshold VO2Max & Aerobic Zone 2 Training Copilot Skill",
+  "description": "Aerobic endurance telemetry analyzer, blood lactate inflection curve regression, VO2 max estimation via heart rate reserve (HRR), and personalized Zone 2 mitochondrial training optimizer. Built for GenPark (https://www.genpark.ai).",
+  "homepage": "https://www.genpark.ai",
+  "linkedin": "https://www.linkedin.com/company/92955550",
+  "category": "personal-agent",
+  "topics": [
+    "vo2-max",
+    "lactate-threshold",
+    "zone2-training",
+    "aerobic-endurance",
+    "personal-agent",
+    "model-context-protocol",
+    "genpark"
+  ],
+  "tools": [
+    {
+      "name": "estimate_vo2max_and_zones",
+      "description": "Calculate estimated VO2 max and individual heart rate zones (Zone 1-5) using resting HR, max HR, and running/cycling pace telemetry.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "resting_heart_rate": {
+            "type": "integer"
+          },
+          "max_heart_rate": {
+            "type": "integer"
+          },
+          "age_years": {
+            "type": "integer"
+          },
+          "sex": {
+            "type": "string",
+            "enum": [
+              "male",
+              "female"
+            ]
+          },
+          "best_5k_time_minutes": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "resting_heart_rate",
+          "max_heart_rate",
+          "age_years",
+          "sex"
+        ]
+      }
+    },
+    {
+      "name": "generate_zone2_mitochondrial_plan",
+      "description": "Synthesize a weekly Zone 2 aerobic base building schedule targeting fat oxidation and mitochondrial biogenesis.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "weekly_available_hours": {
+            "type": "number"
+          },
+          "current_vo2max": {
+            "type": "number"
+          },
+          "zone2_lower_hr": {
+            "type": "integer"
+          },
+          "zone2_upper_hr": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "weekly_available_hours",
+          "zone2_lower_hr",
+          "zone2_upper_hr"
+        ]
+      }
+    }
+  ]
+}
